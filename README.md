@@ -19,21 +19,21 @@ zobrazovat vždy v novém, samostatném okně.
 Program bude mít několik 'packages'. 
 
 package.main bude obsahovat třídy:
-                                  main
+                                  main,
                                   třídu pro reprezentaci matice 
 
 package.gui bude obsahovat třídy jednotlivých oken.
   TJ:
-      hlavní okno aplikace
-      okno pro vložení matice
-      okno pro načtení ze souboru
-      okno pro uloženi
-      okno s návodem
+      hlavní okno aplikace,
+      okno pro vložení matice,
+      okno pro načtení ze souboru,
+      okno pro uloženi,
+      okno s návodem,
       okno pro zobrazení současné matice
       
 package.logika bude obsahovat třídy pro: 
-                                        jednotlivé matematické operace
-                                        čtení ze souboru
+                                        jednotlivé matematické operace,
+                                        čtení ze souboru,
                                         uložení do souboru
                                         
 Třídy a jejich rozvržení je momentálně orientační pouze tak, jak je plánuji. Budu jejich zařazení a fuknce ještě 
