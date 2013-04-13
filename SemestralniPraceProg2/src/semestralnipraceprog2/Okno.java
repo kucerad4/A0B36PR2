@@ -6,6 +6,8 @@ package semestralnipraceprog2;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
 /**
@@ -18,19 +20,23 @@ public class Okno extends JFrame{
     //pole a tlačítka, která budu vyuzivat na titulce    
     protected JTextArea poleMaticeA, poleMaticeB, poleVysledek;
         
-    protected JButton vlozA, vlozB, ulozA, ulozB, ulozC, help;
+    protected JButton vlozA, vlozB, ulozA, ulozB, ulozC, help, spocti;
 
     protected JComboBox vyberOperaci;
     
     protected String operace[] = {"A+B", "A-B", "A*B", "B*A", "Transponovat A", "Transponovat B", "Inverzní A", "Inverzní B", "Determinant A", "Determinant B"};
 
+    
+    Operace op = new Operace();
+    
+    
     public Okno() {
         
         //zalozeni hlavniho okna, velikosti...
         setTitle("Maticová kalkulačka ");
-        setSize(750,400);
+        setSize(750,500);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLayout(new GridLayout(2,1));
+        setLayout(new GridLayout(3,1));
         
         
         //podokno ve kterem jsou pole pro matice
@@ -48,10 +54,20 @@ public class Okno extends JFrame{
         
         add(okna);
         
+        //podokno vyber operace a tlačítko =
+        JPanel pocitej = new JPanel();
+        pocitej.setLayout(new GridLayout(1,2,10,10));
+        pocitej.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        spocti = new JButton("Spočti!");
+        vyberOperaci = new JComboBox(operace);
+        pocitej.add(vyberOperaci);
+        pocitej.add(spocti);
+        add(pocitej);
+        
         
         //podokno pro nabídku operací
         JPanel nabidka = new JPanel();        
-        nabidka.setLayout(new GridLayout(3,3,10,10));
+        nabidka.setLayout(new GridLayout(2,3,10,10));
         nabidka.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         
         vlozA = new JButton("Vlož A ze souboru");
@@ -64,23 +80,74 @@ public class Okno extends JFrame{
         //ulozB.setSize(70, 20);
         ulozC = new JButton("Ulož výsledek");
         //ulozC.setSize(70, 20);
-        vyberOperaci = new JComboBox(operace);
+        help = new JButton("Nápověda");
         
-        
-        
-        nabidka.add(vlozA);
-        nabidka.add(vlozB);
-        nabidka.add(vyberOperaci);
         nabidka.add(ulozA);
         nabidka.add(ulozB);
         nabidka.add(ulozC);
+        nabidka.add(vlozA);
+        nabidka.add(vlozB);
+        nabidka.add(help);
         
         add(nabidka);
-        
-        
-        help = new JButton("Nápověda");
-        nabidka.add(help);
        
+        spocti.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                throw new UnsupportedOperationException("Not supported yet.");
+            }
+        });
+        
+        ulozA.addActionListener(new ActionListener(){
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                throw new UnsupportedOperationException("Not supported yet.");
+            }
+            
+            
+        });
+        
+        ulozB.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                throw new UnsupportedOperationException("Not supported yet.");
+            }
+        });
+        
+        ulozC.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                throw new UnsupportedOperationException("Not supported yet.");
+            }
+        });
+        
+        vlozA.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                throw new UnsupportedOperationException("Not supported yet.");
+            }
+        });
+        
+        vlozB.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                throw new UnsupportedOperationException("Not supported yet.");
+            }
+        });
+        
+        help.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                throw new UnsupportedOperationException("Not supported yet.");
+            }
+        });
         
         
         
@@ -104,6 +171,8 @@ public class Okno extends JFrame{
         
         
     }
+    
+    
     
     
     
