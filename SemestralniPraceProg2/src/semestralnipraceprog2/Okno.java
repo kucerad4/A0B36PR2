@@ -95,7 +95,54 @@ public class Okno extends JFrame{
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                throw new UnsupportedOperationException("Not supported yet.");
+                
+                int volba = vyberOperaci.getSelectedIndex();
+                
+                
+                //MUSÍ SE DOPLNIT VÝSLEDEK Z NAČTENÍ MATIC!!!!
+                //MUSÍ SE DOPLNIT VÝSLEDEK Z NAČTENÍ MATIC!!!!
+                //MUSÍ SE DOPLNIT VÝSLEDEK Z NAČTENÍ MATIC!!!!
+                //MUSÍ SE DOPLNIT VÝSLEDEK Z NAČTENÍ MATIC!!!!
+                //MUSÍ SE DOPLNIT VÝSLEDEK Z NAČTENÍ MATIC!!!!
+                //MUSÍ SE DOPLNIT VÝSLEDEK Z NAČTENÍ MATIC!!!!
+                //MUSÍ SE DOPLNIT VÝSLEDEK Z NAČTENÍ MATIC!!!!
+                switch (volba){
+                    
+                    case 0:
+                        //op.Soucet(maticeA, maticeB);
+                        break;
+                    case 1:
+                        //op.Rozdil(maticeA, maticeB);
+                        break;
+                    case 2:
+                        //op.Soucin(maticeA, maticeB);
+                        break;
+                    case 3:
+                        //op.Soucin(maticeB, maticeA);
+                        break;
+                    case 4:
+                        //op.Soucin(maticeA, maticeB);
+                        break;
+                    case 5:
+                        //op.Transpozice(maticeA);
+                        break;
+                    case 6:
+                        //op.Transpozice(maticeB);
+                        break;
+                    case 7:
+                        //op.Inverzni(maticeA);
+                        break;
+                    case 8:
+                        //op.Inverzni(maticeB);
+                        break;
+                    case 9:
+                        //op.Determinant(maticeA);
+                        break;
+                    case 10:
+                        //op.Determinant(maticeB);
+                        break;
+                        
+                  }
             }
         });
         
