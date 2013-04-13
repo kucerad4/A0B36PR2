@@ -63,7 +63,7 @@ public class Okno extends JFrame{
         ulozB = new JButton("Ulož B");
         //ulozB.setSize(70, 20);
         ulozC = new JButton("Ulož výsledek");
-        //ulozC.setSize(70, 20);
+        
         vyberOperaci = new JComboBox(operace);
         
         
