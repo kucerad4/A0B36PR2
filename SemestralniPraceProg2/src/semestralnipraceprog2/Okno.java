@@ -118,10 +118,10 @@ public class Okno extends JFrame{
                         mat.ZobrazMatici(op.Transpozice(mat.NactiMatici(poleMaticeB)),poleVysledek);
                         break;
                     case 6:
-                        JOptionPane.showMessageDialog(null, "Tato metoda bohužel ještě není implementována. ");
+                        JOptionPane.showMessageDialog(null, "Tato operace bohužel ještě není implementována. ");
                         break;
                     case 7:
-                        JOptionPane.showMessageDialog(null, "Tato metoda bohužel ještě není implementována. ");
+                        JOptionPane.showMessageDialog(null, "Tato operace bohužel ještě není implementována. ");
                         break;
                     case 8:
                         poleVysledek.setText("" +op.Determinant(mat.NactiMatici(poleMaticeA)));
@@ -143,7 +143,11 @@ public class Okno extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
-                    String jmeno = "maticeA.txt";
+                    VyberSouboru vyber = new VyberSouboru();
+                    vyber.setVisible(true);
+        
+                    String jmeno = VyberSouboru.nazev;
+                    
                     mat.Uloz(mat.NactiMatici(poleMaticeA),jmeno);
                 } catch (Exception er) {
                     System.err.println("Chyba při ulkádání matice A! " + er);
@@ -158,7 +162,11 @@ public class Okno extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
-                String jmeno = "maticeB.txt";
+                    VyberSouboru vyber = new VyberSouboru();
+                    vyber.setVisible(true);       
+                    
+                    String jmeno = VyberSouboru.nazev;
+                    
                     mat.Uloz(mat.NactiMatici(poleMaticeB),jmeno);
                 } catch (Exception er) {
                     System.err.println("Chyba při ulkádání matice B! " + er);
@@ -172,7 +180,11 @@ public class Okno extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
-                    String jmeno = "Vysledek.txt";
+                    VyberSouboru vyber = new VyberSouboru();
+                    vyber.setVisible(true);        
+                    
+                    String jmeno = VyberSouboru.nazev;
+                    
                     mat.Uloz(mat.NactiMatici(poleVysledek),jmeno);
                 } catch (Exception er) {
                     System.err.println("Chyba při ulkádání matice C! " + er);
@@ -186,7 +198,10 @@ public class Okno extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    String jmeno = "maticeA.txt";
+                    VyberSouboru vyber = new VyberSouboru();
+                    vyber.setVisible(true);
+        
+                    String jmeno = VyberSouboru.nazev;
                     
                     mat.ZobrazMatici(mat.Nacti(jmeno),poleMaticeA);
                 } catch (FileNotFoundException ex) {
@@ -203,7 +218,11 @@ public class Okno extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    String jmeno = "maticeB.txt";                    
+                    VyberSouboru vyber = new VyberSouboru();
+                    vyber.setVisible(true);
+        
+                    String jmeno = VyberSouboru.nazev;
+                    
                     mat.ZobrazMatici(mat.Nacti(jmeno),poleMaticeB);
                 } catch (FileNotFoundException ex) {
                     System.out.println("Soubor s maticí nebyl nalezen! ");
