@@ -1,13 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package semestralnipraceprog2;
 
-import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import javax.swing.*;
 
 /**
@@ -26,8 +23,9 @@ public class Okno extends JFrame{
     
     protected String operace[] = {"A+B", "A-B", "A*B", "B*A", "Transponovat A", "Transponovat B", "Inverzní A", "Inverzní B", "Determinant A", "Determinant B"};
 
-    
+    //pro přístup k metodám operací a použití matic
     Operace op = new Operace();
+    Matice mat = new Matice();
     
     
     public Okno() {
@@ -48,9 +46,9 @@ public class Okno extends JFrame{
         poleMaticeB = new JTextArea();
         poleVysledek = new JTextArea();
         
-        okna.add(OknoSMatici("Matice A", poleMaticeA));
-        okna.add(OknoSMatici("Matice B", poleMaticeB));
-        okna.add(OknoSMatici("Výsledná matice", poleVysledek));
+        okna.add(OknoSMatici("Matice A:", poleMaticeA));
+        okna.add(OknoSMatici("Matice B:", poleMaticeB));
+        okna.add(OknoSMatici("Výsledek:", poleVysledek));
         
         add(okna);
         
@@ -70,16 +68,11 @@ public class Okno extends JFrame{
         nabidka.setLayout(new GridLayout(2,3,10,10));
         nabidka.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         
-        vlozA = new JButton("Vlož A ze souboru");
-        //vlozA.setSize(70, 20);
-        vlozB = new JButton("Vlož B ze souboru");
-        //vlozB.setSize(70, 20);
-        ulozA = new JButton("Ulož A");
-        //ulozA.setSize(70, 20);
-        ulozB = new JButton("Ulož B");
-        //ulozB.setSize(70, 20);
-        ulozC = new JButton("Ulož výsledek");
-        //ulozC.setSize(70, 20);
+        vlozA = new JButton("Vlož A ze souboru");        
+        vlozB = new JButton("Vlož B ze souboru");        
+        ulozA = new JButton("Ulož A");        
+        ulozB = new JButton("Ulož B");        
+        ulozC = new JButton("Ulož výsledek");        
         help = new JButton("Nápověda");
         
         nabidka.add(ulozA);
@@ -91,115 +84,147 @@ public class Okno extends JFrame{
         
         add(nabidka);
        
+        
+        //ActionListenery
+        
+        //volba akce pro tlačítko 'Spočti!' v závislosti na vybrané operaci
         spocti.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
+                try{
                 
-                int volba = vyberOperaci.getSelectedIndex();
+                int volba = vyberOperaci.getSelectedIndex();             
                 
                 
-                //MUSÍ SE DOPLNIT VÝSLEDEK Z NAČTENÍ MATIC!!!!
-                //MUSÍ SE DOPLNIT VÝSLEDEK Z NAČTENÍ MATIC!!!!
-                //MUSÍ SE DOPLNIT VÝSLEDEK Z NAČTENÍ MATIC!!!!
-                //MUSÍ SE DOPLNIT VÝSLEDEK Z NAČTENÍ MATIC!!!!
-                //MUSÍ SE DOPLNIT VÝSLEDEK Z NAČTENÍ MATIC!!!!
-                //MUSÍ SE DOPLNIT VÝSLEDEK Z NAČTENÍ MATIC!!!!
-                //MUSÍ SE DOPLNIT VÝSLEDEK Z NAČTENÍ MATIC!!!!
                 switch (volba){
                     
                     case 0:
-                        //op.Soucet(maticeA, maticeB);
+                        mat.ZobrazMatici(op.Soucet(mat.NactiMatici(poleMaticeA),mat.NactiMatici(poleMaticeB)),poleVysledek);
                         break;
                     case 1:
-                        //op.Rozdil(maticeA, maticeB);
+                        mat.ZobrazMatici(op.Rozdil(mat.NactiMatici(poleMaticeA),mat.NactiMatici(poleMaticeB)),poleVysledek);
                         break;
                     case 2:
-                        //op.Soucin(maticeA, maticeB);
+                        mat.ZobrazMatici(op.Soucin(mat.NactiMatici(poleMaticeA),mat.NactiMatici(poleMaticeB)),poleVysledek);
                         break;
                     case 3:
-                        //op.Soucin(maticeB, maticeA);
-                        break;
+                        mat.ZobrazMatici(op.Soucin(mat.NactiMatici(poleMaticeB),mat.NactiMatici(poleMaticeA)),poleVysledek);
+                        break;                    
                     case 4:
-                        //op.Soucin(maticeA, maticeB);
+                        mat.ZobrazMatici(op.Transpozice(mat.NactiMatici(poleMaticeA)),poleVysledek);
                         break;
                     case 5:
-                        //op.Transpozice(maticeA);
+                        mat.ZobrazMatici(op.Transpozice(mat.NactiMatici(poleMaticeB)),poleVysledek);
                         break;
                     case 6:
-                        //op.Transpozice(maticeB);
+                        JOptionPane.showMessageDialog(null, "Tato metoda bohužel ještě není implementována. ");
                         break;
                     case 7:
-                        //op.Inverzni(maticeA);
+                        JOptionPane.showMessageDialog(null, "Tato metoda bohužel ještě není implementována. ");
                         break;
                     case 8:
-                        //op.Inverzni(maticeB);
+                        poleVysledek.setText("" +op.Determinant(mat.NactiMatici(poleMaticeA)));
                         break;
                     case 9:
-                        //op.Determinant(maticeA);
-                        break;
-                    case 10:
-                        //op.Determinant(maticeB);
+                        poleVysledek.setText("" +op.Determinant(mat.NactiMatici(poleMaticeB)));
                         break;
                         
                   }
+                } catch (Exception er) {
+                    System.err.println("Chyba chlačítka 'spočti': " + er);
+                }
             }
         });
         
+        //tlačítko ulož, ukládáme matici do souboru
         ulozA.addActionListener(new ActionListener(){
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                throw new UnsupportedOperationException("Not supported yet.");
+                try{
+                    String jmeno = "maticeA.txt";
+                    mat.Uloz(mat.NactiMatici(poleMaticeA),jmeno);
+                } catch (Exception er) {
+                    System.err.println("Chyba při ulkádání matice A! " + er);
+                }
+
             }
-            
-            
         });
         
+        //tlačítko ulož, ukládáme matici do souboru
         ulozB.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                throw new UnsupportedOperationException("Not supported yet.");
+                try{
+                String jmeno = "maticeB.txt";
+                    mat.Uloz(mat.NactiMatici(poleMaticeB),jmeno);
+                } catch (Exception er) {
+                    System.err.println("Chyba při ulkádání matice B! " + er);
+                }
             }
         });
         
+        //tlačítko ulož, ukládáme matici do souboru
         ulozC.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                throw new UnsupportedOperationException("Not supported yet.");
+                try{
+                    String jmeno = "Vysledek.txt";
+                    mat.Uloz(mat.NactiMatici(poleVysledek),jmeno);
+                } catch (Exception er) {
+                    System.err.println("Chyba při ulkádání matice C! " + er);
+                }               
             }
         });
         
+        //tlačítko pro vložení ze souboru
         vlozA.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                throw new UnsupportedOperationException("Not supported yet.");
+                try {
+                    String jmeno = "maticeA.txt";
+                    
+                    mat.ZobrazMatici(mat.Nacti(jmeno),poleMaticeA);
+                } catch (FileNotFoundException ex) {
+                    System.out.println("Soubor s maticí nebyl nalezen! ");
+                } catch (IOException ex) {
+                    System.out.println("Chyba při čtení ze souboru! ");
+                }                
             }
         });
         
-        vlozB.addActionListener(new ActionListener() {
+        //tlačítko pro vložení ze souboru
+        vlozB.addActionListener(new ActionListener() {                    
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                throw new UnsupportedOperationException("Not supported yet.");
+                try {
+                    String jmeno = "maticeB.txt";                    
+                    mat.ZobrazMatici(mat.Nacti(jmeno),poleMaticeB);
+                } catch (FileNotFoundException ex) {
+                    System.out.println("Soubor s maticí nebyl nalezen! ");
+                } catch (IOException ex) {
+                    System.out.println("Chyba při čtení ze souboru! ");
+                }
             }
         });
         
+        //vyskakující okno s nápovědou
         help.addActionListener(new ActionListener() {
-
+           
             @Override
             public void actionPerformed(ActionEvent e) {
-                throw new UnsupportedOperationException("Not supported yet.");
+                Navod navod = new Navod();
+                navod.setVisible(true);
             }
         });
-        
-        
-        
     }
     
+    //založení textových polí pro matice, v rámci objektového pojetí, je samostatně
     private JPanel OknoSMatici(String nazev, JTextArea pole){
         
         JScrollPane poleProMatici = new JScrollPane(pole);
@@ -211,21 +236,8 @@ public class Okno extends JFrame{
         JPanel okno = new JPanel();
         okno.setLayout(new BoxLayout(okno, BoxLayout.Y_AXIS));
         okno.add(nadpis);
-        okno.add(poleProMatici);
-        
+        okno.add(poleProMatici);        
         
         return okno;
-        
-        
     }
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    
 }

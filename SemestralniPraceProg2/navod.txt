@@ -1,0 +1,32 @@
+Vítejte v programu "Maticový kalkulátor"! 
+
+Tato kalkulaèka zvládne všechny základní matematické operace 
+týkající se jedné èi dvou matic.  
+A to souèet, rozdíl, souèin(z obou stran), výpoèet determinantu 
+èi transponované matice. 
+
+Matice se zadávají do pøipravených rámeèkù, pøímo na hlavním 
+panelu. Jednotlivé èíslice od sebe oddìlte pouze mezerou, na nový 
+øádek pokraèujte jen odentrováním. Používejte desetinou teèku, 
+nikoli èárku.
+
+Pro výbìr jednotlivých operací použijte rolovátko na levé stranì 
+okna. Po zvolení operace stisknìte tlaèítko 'Spoèti!', 
+nacházející se napravo od volby operace. 
+
+Výsledná matice se zobrazí v kolonce 'Výsledek'.
+
+
+Pokud s nìjakou maticí budete pracovat èastìji, mùžete si ji 
+uložit pomocí tlaèítka 'ulož', které se nachází pøímo pod oknem 
+s maticí. 
+
+Uloženou matici naètete pøipraveným tlaèítkem 'vlož ze souboru'.
+
+Pro vypnutí programu použijte køížek v horním rohu okna. 
+
+Pro vypnutí této nápovìdy, kliknìte na tlaèítko 'zavøít'.  
+
+
+
+

@@ -1,6 +1,8 @@
 
 package semestralnipraceprog2;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Adam Kucera / kucerad4
@@ -10,31 +12,26 @@ public class Operace {
     public Operace() {
     }   
     
-    //methods for math operations, some yet with dummy procedures 
-    
     //metoda pro součet
-    public double [][] Soucet(double[][] maticeA, double[][] maticeB){
+    public double [][] Soucet(double[][] maticeA, double[][] maticeB){        
         
         double vysledek[][] = new double [maticeA.length][maticeA[0].length];
         
         if (maticeA.length != maticeB.length || maticeA[0].length != maticeB[0].length){
-            System.out.println("Matice nemají kompatibilní rozměry pro sečtení! ");
+            JOptionPane.showMessageDialog(null, "Matice nemají kompatibilní rozměry pro sečtení! ");
             
         }
         
         else{
-            for (int i = 0; i < vysledek.length; i++) {
+            for (int i = 0; i < maticeA.length; i++) {
                 
-                for (int j = 0; j < vysledek[0].length; j++) {
+                for (int j = 0; j < maticeA[0].length; j++) {
                     
                     vysledek[i][j]=maticeA[i][j] + maticeB[i][j];
                     
-                }
-                
-            }
-            
-        }
-        
+                }                
+            }            
+        }        
         return vysledek;        
         
     }
@@ -45,7 +42,7 @@ public class Operace {
         double vysledek[][] = new double [maticeA.length][maticeA[0].length];
         
         if (maticeA.length != maticeB.length || maticeA[0].length != maticeB[0].length){
-            System.out.println("Matice nemají kompatibilní rozměry pro odečtení! ");
+            JOptionPane.showMessageDialog(null, "Matice nemají kompatibilní rozměry pro odečtení! ");
             
         }
         
@@ -56,12 +53,9 @@ public class Operace {
                     
                     vysledek[i][j]=maticeA[i][j] - maticeB[i][j];
                     
-                }
-                
-            }
-            
-        }
-        
+                }                
+            }            
+        }        
         return vysledek;        
         
     }
@@ -69,20 +63,22 @@ public class Operace {
     public double [][] Soucin(double[][] maticeA, double[][] maticeB){
         
         double vysledek[][] = new double [maticeA.length][maticeB[0].length];
+        double sum = 0;
         
         if (maticeA[0].length != maticeB.length){
             
-            System.out.println("Matice nejsou kompatibilní pro součin. ");
+            JOptionPane.showMessageDialog(null, "Matice nejsou kompatibilní pro součin. ");
         }
-        else{
+        else{            
             
-            for (int i = 0; i < vysledek.length; i++) {
-                
-                for (int j = 0; j < vysledek[0].length; j++) {
-                    
-                    vysledek[i][j]=maticeA[i][j] * maticeB[j][i];
-                    
-                }                
+            for ( int i = 0 ; i < maticeA.length ; i++ ) {
+                for ( int j = 0 ; j < maticeB[0].length ; j++ ) {   
+                    for ( int k = 0 ; k < maticeB.length ; k++ ) {
+                        sum += maticeA[i][k]*maticeB[k][j];
+                    }
+                    vysledek[i][j] = sum;
+                    sum = 0;
+                }
             }
         }
         
@@ -95,20 +91,35 @@ public class Operace {
         
         if (maticeA.length != maticeA[0].length){
             
-            System.out.println("Matice není čtvercová! ");
-        }
-        else{
-            //DOPLNIT!!!!!
-            //DOPLNIT!!!!!
-            //DOPLNIT!!!!!
-            //DOPLNIT!!!!!
-            //DOPLNIT!!!!!
-            //DOPLNIT!!!!!            
-               
-            
-        }
-    
+            JOptionPane.showMessageDialog(null, "Matice není čtvercová! ");
+        } else {
         
+            int sum=0; 
+            int s;
+            if(maticeA.length==1){
+                return(maticeA[0][0]);
+            }
+            for(int i=0;i<maticeA.length;i++){
+                double[][]mini= new double[maticeA.length-1][maticeA.length-1];
+                for(int a=1;a<maticeA.length;a++){
+                    for(int b=0;b<maticeA.length;b++){
+                        if(b<i){
+                            mini[a-1][b]=maticeA[a][b];
+                        }
+                        else if(b>i){
+                            mini[a-1][b-1]=maticeA[a][b];
+                        }
+                    }
+                }
+                if(i%2==0){ //změna znaménka - máme přičítat nebo odčítat
+                    s=1;
+                }
+                else{
+                    s=-1;
+                }            
+                vysledek+=s*maticeA[0][i]*(Determinant(mini));
+            }
+        }
         return vysledek;
     }
     
@@ -119,12 +130,11 @@ public class Operace {
         
         for (int i = 0; i < vysledek.length; i++) {
                 
-                for (int j = 0; j < vysledek[0].length; j++) {
-                    
-                    vysledek[i][j]=maticeA[j][i];                    
-                }                
-            }
-        
+            for (int j = 0; j < vysledek[0].length; j++) {
+
+                vysledek[i][j]=maticeA[j][i];                    
+            }                
+        }        
         return vysledek;
     }
     
@@ -135,7 +145,7 @@ public class Operace {
         
         if (maticeA.length != maticeA[0].length){
             
-            System.out.println("Matice není čtvercová! ");
+            JOptionPane.showMessageDialog(null, "Matice není čtvercová! ");
         }
         else{
             //DOPLNIT!!!!!
@@ -144,16 +154,9 @@ public class Operace {
             //DOPLNIT!!!!!
             //DOPLNIT!!!!!
             //DOPLNIT!!!!!            
-            //DOPLNIT!!!!!        
-            
+            //DOPLNIT!!!!!                    
         }        
         
         return vysledek;
     }
-    
-    
-    
-    
-    
-    
 }
