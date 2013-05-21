@@ -13,7 +13,7 @@ public class Operace {
     }   
     
     //metoda pro součet
-    public double [][] Soucet(double[][] maticeA, double[][] maticeB){        
+    public static double [][] Soucet(double[][] maticeA, double[][] maticeB){        
         
         double vysledek[][] = new double [maticeA.length][maticeA[0].length];
         
@@ -37,7 +37,7 @@ public class Operace {
     }
     
     //metoda rozdílu
-    public double [][] Rozdil(double[][] maticeA, double[][] maticeB){
+    public static double [][] Rozdil(double[][] maticeA, double[][] maticeB){
         
         double vysledek[][] = new double [maticeA.length][maticeA[0].length];
         
@@ -60,7 +60,7 @@ public class Operace {
         
     }
     //metoda pro soucin
-    public double [][] Soucin(double[][] maticeA, double[][] maticeB){
+    public static double [][] Soucin(double[][] maticeA, double[][] maticeB){
         
         double vysledek[][] = new double [maticeA.length][maticeB[0].length];
         double sum = 0;
@@ -85,7 +85,7 @@ public class Operace {
         return vysledek;
     }
     //metoda pro vypocet determinantu
-    public double Determinant(double[][] maticeA){
+    public static double Determinant(double[][] maticeA){
         
         double vysledek = 0;
         
@@ -124,7 +124,7 @@ public class Operace {
     }
     
     //vypocet transponovane matice
-    public double [][] Transpozice(double[][] maticeA){
+    public static double [][] Transpozice(double[][] maticeA){
         
         double vysledek [][] = new double [maticeA[0].length][maticeA.length];
         
@@ -139,7 +139,7 @@ public class Operace {
     }
     
     //vypovet inverzni matice
-    double [][] Inverzni(double[][] maticeA){
+    public static double [][] Inverzni(double[][] maticeA){
         
         double vysledek [][] = new double [maticeA.length][maticeA[0].length];
         

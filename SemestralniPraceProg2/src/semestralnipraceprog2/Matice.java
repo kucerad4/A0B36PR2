@@ -18,7 +18,7 @@ public class Matice {
     
     
     //Nactení matice z okna
-    public double[][] NactiMatici(JTextArea pole){
+    public static double[][] NactiMatici(JTextArea pole){
         
         //založení proměnných
 	String text = pole.getText();
@@ -67,7 +67,7 @@ public class Matice {
         return matice;
     }
     //zobrazení matice v jednom z textových polí, vstupem je polem s maticí a textové pole, do kterého budeme ukládat
-    public void ZobrazMatici(double[][] matice, JTextArea pole) {
+    public static void ZobrazMatici(double[][] matice, JTextArea pole) {
             
         //založení proměnných
         String komplet = "";
@@ -88,7 +88,7 @@ public class Matice {
     
     
     //uložení matice do souboru
-    public void Uloz(double[][] matice, String jmeno){
+    public static void Uloz(double[][] matice, String jmeno){
         
         //pomocí FileWriteru jdeme po prvcích matice, které postupně zapisujeme
         //do vytvořeného souboru
@@ -118,7 +118,7 @@ public class Matice {
     
     
     //načtení uožené matice ze souboru
-    public double[][] Nacti(String nazev) throws FileNotFoundException, IOException{
+    public static double[][] Nacti(String nazev) throws FileNotFoundException, IOException{
          
         //kvůli return value musíme založit matici již teď s nefinálními rozměry
         double matice[][] = new double[2][2];

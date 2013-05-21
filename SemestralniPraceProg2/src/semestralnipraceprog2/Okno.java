@@ -23,11 +23,7 @@ public class Okno extends JFrame{
     
     protected String operace[] = {"A+B", "A-B", "A*B", "B*A", "Transponovat A", "Transponovat B", "Inverzní A", "Inverzní B", "Determinant A", "Determinant B"};
 
-    //pro přístup k metodám operací a použití matic
-    Operace op = new Operace();
-    Matice mat = new Matice();
-    
-    
+   
     public Okno() {
         
         //zalozeni hlavniho okna, velikosti...
@@ -100,22 +96,22 @@ public class Okno extends JFrame{
                 switch (volba){
                     
                     case 0:
-                        mat.ZobrazMatici(op.Soucet(mat.NactiMatici(poleMaticeA),mat.NactiMatici(poleMaticeB)),poleVysledek);
+                        Matice.ZobrazMatici(Operace.Soucet(Matice.NactiMatici(poleMaticeA),Matice.NactiMatici(poleMaticeB)),poleVysledek);
                         break;
                     case 1:
-                        mat.ZobrazMatici(op.Rozdil(mat.NactiMatici(poleMaticeA),mat.NactiMatici(poleMaticeB)),poleVysledek);
+                        Matice.ZobrazMatici(Operace.Rozdil(Matice.NactiMatici(poleMaticeA),Matice.NactiMatici(poleMaticeB)),poleVysledek);
                         break;
                     case 2:
-                        mat.ZobrazMatici(op.Soucin(mat.NactiMatici(poleMaticeA),mat.NactiMatici(poleMaticeB)),poleVysledek);
+                        Matice.ZobrazMatici(Operace.Soucin(Matice.NactiMatici(poleMaticeA),Matice.NactiMatici(poleMaticeB)),poleVysledek);
                         break;
                     case 3:
-                        mat.ZobrazMatici(op.Soucin(mat.NactiMatici(poleMaticeB),mat.NactiMatici(poleMaticeA)),poleVysledek);
+                        Matice.ZobrazMatici(Operace.Soucin(Matice.NactiMatici(poleMaticeB),Matice.NactiMatici(poleMaticeA)),poleVysledek);
                         break;                    
                     case 4:
-                        mat.ZobrazMatici(op.Transpozice(mat.NactiMatici(poleMaticeA)),poleVysledek);
+                        Matice.ZobrazMatici(Operace.Transpozice(Matice.NactiMatici(poleMaticeA)),poleVysledek);
                         break;
                     case 5:
-                        mat.ZobrazMatici(op.Transpozice(mat.NactiMatici(poleMaticeB)),poleVysledek);
+                        Matice.ZobrazMatici(Operace.Transpozice(Matice.NactiMatici(poleMaticeB)),poleVysledek);
                         break;
                     case 6:
                         JOptionPane.showMessageDialog(null, "Tato operace bohužel ještě není implementována. ");
@@ -124,10 +120,10 @@ public class Okno extends JFrame{
                         JOptionPane.showMessageDialog(null, "Tato operace bohužel ještě není implementována. ");
                         break;
                     case 8:
-                        poleVysledek.setText("" +op.Determinant(mat.NactiMatici(poleMaticeA)));
+                        poleVysledek.setText("" +Operace.Determinant(Matice.NactiMatici(poleMaticeA)));
                         break;
                     case 9:
-                        poleVysledek.setText("" +op.Determinant(mat.NactiMatici(poleMaticeB)));
+                        poleVysledek.setText("" +Operace.Determinant(Matice.NactiMatici(poleMaticeB)));
                         break;
                         
                   }
@@ -148,7 +144,7 @@ public class Okno extends JFrame{
         
                     String jmeno = VyberSouboru.nazev;
                     
-                    mat.Uloz(mat.NactiMatici(poleMaticeA),jmeno);
+                    Matice.Uloz(Matice.NactiMatici(poleMaticeA),jmeno);
                 } catch (Exception er) {
                     System.err.println("Chyba při ulkádání matice A! " + er);
                 }
@@ -167,7 +163,7 @@ public class Okno extends JFrame{
                     
                     String jmeno = VyberSouboru.nazev;
                     
-                    mat.Uloz(mat.NactiMatici(poleMaticeB),jmeno);
+                    Matice.Uloz(Matice.NactiMatici(poleMaticeB),jmeno);
                 } catch (Exception er) {
                     System.err.println("Chyba při ulkádání matice B! " + er);
                 }
@@ -185,7 +181,7 @@ public class Okno extends JFrame{
                     
                     String jmeno = VyberSouboru.nazev;
                     
-                    mat.Uloz(mat.NactiMatici(poleVysledek),jmeno);
+                    Matice.Uloz(Matice.NactiMatici(poleVysledek),jmeno);
                 } catch (Exception er) {
                     System.err.println("Chyba při ulkádání matice C! " + er);
                 }               
@@ -203,7 +199,7 @@ public class Okno extends JFrame{
         
                     String jmeno = VyberSouboru.nazev;
                     
-                    mat.ZobrazMatici(mat.Nacti(jmeno),poleMaticeA);
+                    Matice.ZobrazMatici(Matice.Nacti(jmeno),poleMaticeA);
                 } catch (FileNotFoundException ex) {
                     System.out.println("Soubor s maticí nebyl nalezen! ");
                 } catch (IOException ex) {
@@ -223,7 +219,7 @@ public class Okno extends JFrame{
         
                     String jmeno = VyberSouboru.nazev;
                     
-                    mat.ZobrazMatici(mat.Nacti(jmeno),poleMaticeB);
+                    Matice.ZobrazMatici(Matice.Nacti(jmeno),poleMaticeB);
                 } catch (FileNotFoundException ex) {
                     System.out.println("Soubor s maticí nebyl nalezen! ");
                 } catch (IOException ex) {

@@ -98,17 +98,5 @@ public class VyberSouboru extends JDialog {
             }
         
         });
-        
-        
-        
-        
-        
-         
-         
-         
-     
      }
-     
-    
-    
 }
